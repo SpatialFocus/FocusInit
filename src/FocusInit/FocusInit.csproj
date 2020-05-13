@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>focus-init</ToolCommandName>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
+
+		<Version>0.1.1</Version>
+		<PackageId>SpatialFocus.FocusInit</PackageId>
+		<Title>Spatial Focus initialize project wizard</Title>
+		<Description>DotNet Tool for initializing an empty folder, create a solution with stylecop, ReSharper and license settings, and optionally add projects.</Description>
+		<PackageTags>tool, scaffolding, code-style, code-quality</PackageTags>
+		<PackageProjectUrl>https://github.com/SpatialFocus/SpatialFocus.FocusInit</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/SpatialFocus/SpatialFocus.FocusInit.git</RepositoryUrl>
+		<Authors>pergerch,Dresel</Authors>
+		<Company>SpatialFocus</Company>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="nupkg\**" />
+    <EmbeddedResource Remove="nupkg\**" />
+    <None Remove="nupkg\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.27.0-preview-0034" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>
