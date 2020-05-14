@@ -64,49 +64,58 @@ namespace FocusInit
 				Console.WriteLine("  2) Empty web");
 				Console.WriteLine("  3) Web API");
 				Console.WriteLine("  4) Web MVC");
-				Console.WriteLine("  5) Xamarin Forms Shell (coming soon)");
+				Console.WriteLine("  5) Xamarin Forms Shell");
 				Console.WriteLine("  6) Blazor Server");
 				Console.WriteLine("  7) Blazor Wasm");
 				i = Prompt.GetInt("Select project type", null, ConsoleColor.DarkCyan);
 			}
 			while (i <= 0 || i > 7);
 
-			List<string> createdProjects = new List<string>();
+			List<string> projectsToReference = new List<string>();
 
 			switch (i)
 			{
 				case 1:
 					string consoleProject = cliHelper.CreateProject("console", "Console");
 					cliHelper.AddProjectToSolution(consoleProject);
-					createdProjects.Add(consoleProject);
+					projectsToReference.Add(consoleProject);
 					break;
 				case 2:
 					string emptyWebProject = cliHelper.CreateProject("web", "Web");
 					cliHelper.AddProjectToSolution(emptyWebProject);
-					createdProjects.Add(emptyWebProject);
+					projectsToReference.Add(emptyWebProject);
 					break;
 				case 3:
 					string webApiProject = cliHelper.CreateProject("webapi", "Web");
 					cliHelper.AddProjectToSolution(webApiProject);
-					createdProjects.Add(webApiProject);
+					projectsToReference.Add(webApiProject);
 					break;
 				case 4:
 					string mvcProject = cliHelper.CreateProject("mvc", "Web");
 					cliHelper.AddProjectToSolution(mvcProject);
-					createdProjects.Add(mvcProject);
+					projectsToReference.Add(mvcProject);
 					break;
 				case 5:
-					// TODO
-					return;
+					// Make sure the Xamarin Forms Shell template is installed
+					cliHelper.InstallCustomProjectTemplate("SpatialFocus.DotNetNew.XamarinFormsShell::0.1.2");
+
+					string xfShellProject = cliHelper.CreateMultiProject("focus-xfshell");
+
+					cliHelper.AddProjectToSolution(xfShellProject);
+					cliHelper.AddProjectToSolution($"{xfShellProject}.Android");
+					cliHelper.AddProjectToSolution($"{xfShellProject}.iOS");
+
+					projectsToReference.Add(xfShellProject);
+					break;
 				case 6:
 					string blazorProject = cliHelper.CreateProject("blazorserver", "Blazor");
 					cliHelper.AddProjectToSolution(blazorProject);
-					createdProjects.Add(blazorProject);
+					projectsToReference.Add(blazorProject);
 					break;
 				case 7:
 					string wasmProject = cliHelper.CreateProject("blazorwasm", "Blazor");
 					cliHelper.AddProjectToSolution(wasmProject);
-					createdProjects.Add(wasmProject);
+					projectsToReference.Add(wasmProject);
 					break;
 			}
 
@@ -116,12 +125,12 @@ namespace FocusInit
 
 				cliHelper.AddProjectToSolution(businessProject);
 
-				foreach (string project in createdProjects)
+				foreach (string project in projectsToReference)
 				{
 					cliHelper.AddReferenceToProject(project, businessProject);
 				}
 
-				createdProjects.Add(businessProject);
+				projectsToReference.Add(businessProject);
 			}
 
 			if (Prompt.GetYesNo("Create shared project?", false, ConsoleColor.DarkCyan))
@@ -130,7 +139,7 @@ namespace FocusInit
 
 				cliHelper.AddProjectToSolution(sharedProject);
 
-				foreach (string project in createdProjects)
+				foreach (string project in projectsToReference)
 				{
 					cliHelper.AddReferenceToProject(project, sharedProject);
 				}
@@ -142,7 +151,7 @@ namespace FocusInit
 
 				cliHelper.AddProjectToSolution(testProject);
 
-				foreach (string project in createdProjects)
+				foreach (string project in projectsToReference)
 				{
 					cliHelper.AddReferenceToProject(testProject, project);
 				}

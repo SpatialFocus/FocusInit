@@ -1,10 +1,11 @@
 # Spatial Focus initialize project wizard
 
+[![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/)
 
 ## Install the dotnet tool
 
 ```
-dotnet tool install --global SpatialFocus.FocusInit --version 0.1.1
+dotnet tool install --global SpatialFocus.FocusInit --version 0.2.0
 ```
 
 Install the tool globally. You can invoke the tool using the following command: `focus-init`

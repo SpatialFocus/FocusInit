@@ -36,6 +36,18 @@ namespace FocusInit
 			process.WaitForExit(3000);
 		}
 
+		public string CreateMultiProject(string type)
+		{
+			string srcFolder = !string.IsNullOrEmpty(WorkDir) ? WorkDir + "/src" : "src";
+
+			string createProjectCmd = $"new {type} -n {SolutionName} -o {srcFolder}";
+			Process process = Process.Start("dotnet", createProjectCmd);
+
+			process.WaitForExit(3000);
+
+			return $"{srcFolder}/{SolutionName}";
+		}
+
 		public string CreateProject(string type, string projectSuffix)
 		{
 			string srcFolder = !string.IsNullOrEmpty(WorkDir) ? WorkDir + "/src" : "src";
@@ -46,6 +58,14 @@ namespace FocusInit
 			process.WaitForExit(3000);
 
 			return $"{srcFolder}/{SolutionName}.{projectSuffix}";
+		}
+
+		public void InstallCustomProjectTemplate(string type)
+		{
+			string installTemplateCmd = $"new -i {type}";
+			Process process = Process.Start("dotnet", installTemplateCmd);
+
+			process.WaitForExit(3000);
 		}
 	}
 }
