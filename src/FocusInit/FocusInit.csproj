@@ -8,10 +8,10 @@
 		<ToolCommandName>focus-init</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 
-		<Version>0.3.0</Version>
+		<Version>0.4.0</Version>
 		<PackageId>SpatialFocus.FocusInit</PackageId>
 		<Title>Spatial Focus initialize project wizard</Title>
-		<Description>DotNet Tool for initializing an empty folder, create a solution with stylecop, ReSharper and license settings, and optionally add projects.</Description>
+		<Description>DotNet Tool for initializing an empty folder, create a solution with stylecop, ReSharper and MSBuild settings, and optionally add projects.</Description>
 		<PackageTags>tool, scaffolding, code-style, code-quality</PackageTags>
 		<PackageProjectUrl>https://github.com/SpatialFocus/FocusInit</PackageProjectUrl>
 		<PackageIcon>icon.png</PackageIcon>

@@ -160,7 +160,7 @@ namespace FocusInit
 
 			if (Prompt.GetYesNo("Create test project?", false, ConsoleColor.DarkCyan))
 			{
-				string testProject = cliHelper.CreateProject("nunit", "Test");
+				string testProject = cliHelper.CreateProject("xunit", "Test");
 
 				cliHelper.AddProjectToSolution(testProject);
 

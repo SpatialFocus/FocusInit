@@ -26,12 +26,12 @@ After setting up one of these demo projects, typical generic projects can be add
 
 - Business (class library for business logic)
 - Shared (class library for shared data)
-- Test (nunit test project)
+- Test (xUnit test project)
 
 ## Install the dotnet tool
 
 ```
-dotnet tool install --global SpatialFocus.FocusInit --version 0.3.0
+dotnet tool install --global SpatialFocus.FocusInit --version 0.4.0
 ```
 
 Install the tool globally. You can invoke the tool using the following command: `focus-init`
