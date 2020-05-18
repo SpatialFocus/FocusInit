@@ -10,14 +10,28 @@ namespace FocusInit
 	{
 		public void CleanupAndCreateWorkDir()
 		{
-			if (Directory.Exists(Settings.WorkingDir))
+			if (!string.IsNullOrEmpty(Settings.WorkingDir) && !Directory.Exists(Settings.WorkingDir))
 			{
-				// Deal with readonly files (typically in .git folder)
-				SetDirectoryNormal(Settings.WorkingDir);
-				Directory.Delete(Settings.WorkingDir, true);
+				Directory.CreateDirectory(Settings.WorkingDir);
+				return;
 			}
 
-			Directory.CreateDirectory(Settings.WorkingDir);
+			string targetDirectory = !string.IsNullOrEmpty(Settings.WorkingDir) ? Settings.WorkingDir : Directory.GetCurrentDirectory();
+
+			DirectoryInfo currentDirectory = new DirectoryInfo(targetDirectory);
+
+			// Deal with readonly files (typically in .git folder)
+			SetDirectoryNormal(currentDirectory.FullName);
+
+			foreach (FileInfo file in currentDirectory.GetFiles())
+			{
+				file.Delete();
+			}
+
+			foreach (DirectoryInfo dir in currentDirectory.GetDirectories())
+			{
+				dir.Delete(true);
+			}
 		}
 
 		public void DeleteRepository()

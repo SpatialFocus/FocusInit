@@ -48,16 +48,17 @@ namespace FocusInit
 			return $"{srcFolder}/{SolutionName}";
 		}
 
-		public string CreateProject(string type, string projectSuffix)
+		public string CreateProject(string type, string projectSuffix = null)
 		{
 			string srcFolder = !string.IsNullOrEmpty(WorkDir) ? WorkDir + "/src" : "src";
+			string projectName = !string.IsNullOrEmpty(projectSuffix) ? $"{SolutionName}.{projectSuffix}" : SolutionName;
 
-			string createProjectCmd = $"new {type} -n {SolutionName}.{projectSuffix} -o {srcFolder}/{SolutionName}.{projectSuffix}";
+			string createProjectCmd = $"new {type} -n {projectName} -o {srcFolder}/{projectName}";
 			Process process = Process.Start("dotnet", createProjectCmd);
 
 			process.WaitForExit(3000);
 
-			return $"{srcFolder}/{SolutionName}.{projectSuffix}";
+			return $"{srcFolder}/{projectName}";
 		}
 
 		public void InstallCustomProjectTemplate(string type)

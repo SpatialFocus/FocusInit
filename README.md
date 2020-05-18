@@ -2,10 +2,36 @@
 
 [![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/)
 
+Initialize an empty folder for a new project by copying and modifying files from our [repository-template](https://github.com/SpatialFocus/repository-template). This includes:
+
+- .gitignore and .editorconfig
+- stylecop.json and ReSharper settings
+- MSBuild properties
+- Solution file including the default _Solution Items_ solution folder
+- README.md
+
+Placeholders in these files will be filled with solution name and author information.
+
+Additionally, the wizard supports the creation of .NET Core projects in the solution. Currently, these project templates are available:
+
+1) Console app
+2) Empty web
+3) Web API
+4) Web MVC
+5) Xamarin Forms Shell (using our [Xamarin Forms Shell template](https://github.com/SpatialFocus/DotNetNew.XamarinFormsShell))
+6) Blazor Server
+7) Blazor Wasm
+
+After setting up one of these demo projects, typical generic projects can be added as well:
+
+- Business (class library for business logic)
+- Shared (class library for shared data)
+- Test (nunit test project)
+
 ## Install the dotnet tool
 
 ```
-dotnet tool install --global SpatialFocus.FocusInit --version 0.2.0
+dotnet tool install --global SpatialFocus.FocusInit --version 0.3.0
 ```
 
 Install the tool globally. You can invoke the tool using the following command: `focus-init`
@@ -32,12 +58,21 @@ d-----       13.05.2020     15:19                NewConsoleProject
 PS C:\temp> cd .\NewConsoleProject\
 
 PS C:\temp\NewConsoleProject> focus-init
+
+          __                            _       _ _
+         / _| ___   ___ _   _ ___      (_)_ __ (_) |_
+        | |_ / _ \ / __| | | / __|_____| | '_ \| | __|
+        |  _| (_) | (__| |_| \__ \_____| | | | | | |_
+        |_|  \___/ \___|\__,_|___/     |_|_| |_|_|\__|
+
+
+Initialize this folder for a new project.
 Enter solution name [NewConsoleProject]
 Enter company name [Spatial Focus GmbH]
 Template repository cloned successfully.
 Solution files have been copied and modified.
 Create additional projects? [Y/n] n
-Finished.
+Finished. Have fun!
 
 PS C:\temp\NewConsoleProject> dir
 

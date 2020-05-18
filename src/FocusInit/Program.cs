@@ -16,14 +16,27 @@ namespace FocusInit
 		{
 			FileSystemHelper fileSystemHelper = new FileSystemHelper();
 
-			if (!string.IsNullOrEmpty(Settings.WorkingDir))
+			Console.WriteLine(@"
+	  __                            _       _ _   
+	 / _| ___   ___ _   _ ___      (_)_ __ (_) |_ 
+	| |_ / _ \ / __| | | / __|_____| | '_ \| | __|
+	|  _| (_) | (__| |_| \__ \_____| | | | | | |_ 
+	|_|  \___/ \___|\__,_|___/     |_|_| |_|_|\__|
+	                                              
+");
+			Console.WriteLine("Initialize this folder for a new project.");
+
+			string targetDirectory = string.IsNullOrEmpty(Settings.WorkingDir) ? Directory.GetCurrentDirectory() : Settings.WorkingDir;
+
+			if (Directory.GetFiles(targetDirectory).Length > 0 || Directory.GetDirectories(targetDirectory).Length > 0)
 			{
-				fileSystemHelper.CleanupAndCreateWorkDir();
+				if (!Prompt.GetYesNo("Directory is not empty. Delete all files/folders and continue?", false, ConsoleColor.Red))
+				{
+					return;
+				}
 			}
 
-			Console.WriteLine("Welcome to focus-init");
-			Console.WriteLine();
-			Console.WriteLine("Initialize this folder for a new project.");
+			fileSystemHelper.CleanupAndCreateWorkDir();
 
 			string currentDirectoryName = new DirectoryInfo(Directory.GetCurrentDirectory()).Name;
 			string solutionName = Prompt.GetString("Enter solution name", currentDirectoryName, ConsoleColor.DarkCyan);
@@ -76,7 +89,7 @@ namespace FocusInit
 			switch (i)
 			{
 				case 1:
-					string consoleProject = cliHelper.CreateProject("console", "Console");
+					string consoleProject = cliHelper.CreateProject("console");
 					cliHelper.AddProjectToSolution(consoleProject);
 					projectsToReference.Add(consoleProject);
 					break;
