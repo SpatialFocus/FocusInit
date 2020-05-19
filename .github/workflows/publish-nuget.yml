@@ -24,6 +24,7 @@ jobs:
         NUGET_KEY: ${{secrets.NUGET_API_KEY}}
     - name: Persist NuGet artifact
       uses: actions/upload-artifact@v1
+      if: ${{steps.publishNuGet.outputs.PACKAGE_NAME != ''}}
       with:
         name: ${{steps.publishNuGet.outputs.PACKAGE_NAME}}
         path: ${{steps.publishNuGet.outputs.PACKAGE_PATH}}
