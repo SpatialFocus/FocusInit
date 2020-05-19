@@ -1,6 +1,6 @@
 # Spatial Focus initialize project wizard
 
-[![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/) ![Build and publish NuGet](https://github.com/SpatialFocus/FocusInit/workflows/Build%20and%20publish%20NuGet/badge.svg?branch=master)
+[![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/) [![Build and publish NuGet](https://github.com/SpatialFocus/FocusInit/workflows/Build%20and%20publish%20NuGet/badge.svg?branch=master)](https://github.com/SpatialFocus/FocusInit/actions)
 
 Initialize an empty folder for a new project by copying and modifying files from our [repository-template](https://github.com/SpatialFocus/repository-template). This includes:
 
