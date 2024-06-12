@@ -1,6 +1,6 @@
 # Spatial Focus initialize project wizard
 
-[![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/) [![Build and publish NuGet](https://github.com/SpatialFocus/FocusInit/workflows/Build%20and%20publish%20NuGet/badge.svg?branch=master)](https://github.com/SpatialFocus/FocusInit/actions)
+[![Nuget](https://img.shields.io/nuget/v/SpatialFocus.FocusInit)](https://www.nuget.org/packages/SpatialFocus.FocusInit/)
 
 Initialize an empty folder for a new project by copying and modifying files from our [repository-template](https://github.com/SpatialFocus/repository-template). This includes:
 
@@ -31,7 +31,7 @@ After setting up one of these demo projects, typical generic projects can be add
 ## Install the dotnet tool
 
 ```
-dotnet tool install --global SpatialFocus.FocusInit --version 0.4.0
+dotnet tool install --global SpatialFocus.FocusInit --version 0.5.0
 ```
 
 Install the tool globally. You can invoke the tool using the following command: `focus-init`
